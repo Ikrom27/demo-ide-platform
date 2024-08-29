@@ -1,6 +1,7 @@
 package ru.ikrom.demo_ide_platform.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,8 +16,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import ru.ikrom.demo_ide_platform.R
 import ru.ikrom.demo_ide_platform.ui.cards.ProductCard
 import ru.ikrom.demo_ide_platform.ui.components.ScreenTitleBar
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_BETWEEN_LARGE
@@ -28,7 +31,7 @@ fun ProductListScreen(
 ){
     Scaffold(
         topBar = {
-            ScreenTitleBar("Список товаров")
+            ScreenTitleBar(stringResource(id = R.string.products_list))
         }
     ) { padding ->
         ProductList(viewModel, Modifier.padding(top = padding.calculateTopPadding()))
@@ -45,8 +48,9 @@ private fun ProductList(
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(PADDING_BETWEEN_LARGE),
+        contentPadding = PaddingValues(vertical = PADDING_BETWEEN_LARGE),
         modifier = modifier
-            .padding(vertical = 14.dp, horizontal = 14.dp)
+            .padding(horizontal = 14.dp)
     ) {
         item {
             OutlinedTextField(
@@ -55,7 +59,7 @@ private fun ProductList(
                     searchField = it
                     viewModel.updateListItems(it)
                 },
-                label = {Text("Поиск")},
+                label = {Text(stringResource(id = R.string.search_products))},
                 modifier = Modifier.fillMaxWidth()
             )
         }

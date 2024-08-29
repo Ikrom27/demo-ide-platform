@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Demo-ide-platform</string>
-    
+
+    <string name="products_list">Products list</string>
+    <string name="search_products">Search products</string>
     <string name="in_store">In store</string>
-    <string name="update_date">Update date</string>
+    <string name="added_date">Added date</string>
 </resources>

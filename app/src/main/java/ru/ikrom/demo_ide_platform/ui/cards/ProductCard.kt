@@ -158,7 +158,7 @@ fun ProductInfo(product: ProductItem){
         }
         Column(verticalArrangement = Arrangement.spacedBy(PADDING_BETWEEN_SMALL)) {
             Text(
-                text = stringResource(id = R.string.update_date),
+                text = stringResource(id = R.string.added_date),
                 style = MaterialTheme.typography.bodyLarge.copy(),
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 18.sp
