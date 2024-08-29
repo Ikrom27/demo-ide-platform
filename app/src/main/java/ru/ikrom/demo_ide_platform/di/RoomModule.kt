@@ -22,7 +22,9 @@ object RoomModule {
             context,
             AppDataBase::class.java,
             "app_database",
-        ).build()
+        )
+            .createFromAsset("data.db")
+            .build()
     }
 
     @Provides
