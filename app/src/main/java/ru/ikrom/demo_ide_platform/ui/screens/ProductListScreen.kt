@@ -61,7 +61,7 @@ private fun ProductList(
         }
 
         items(items = products){
-            ProductCard(it)
+            ProductCard(it, {}, {})
         }
     }
 }
