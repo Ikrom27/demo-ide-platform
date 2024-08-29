@@ -27,7 +27,7 @@ import com.google.accompanist.flowlayout.FlowRow
 import ru.ikrom.demo_ide_platform.R
 import ru.ikrom.demo_ide_platform.ui.items.ProductItem
 import ru.ikrom.demo_ide_platform.ui.items.TagUI
-import ru.ikrom.demo_ide_platform.ui.theme.BUTTON_MEDIUM
+import ru.ikrom.demo_ide_platform.ui.theme.ICON_MEDIUM
 import ru.ikrom.demo_ide_platform.ui.theme.CARD_ELEVATION
 import ru.ikrom.demo_ide_platform.ui.theme.CardColor
 import ru.ikrom.demo_ide_platform.ui.theme.EditColor
@@ -91,7 +91,7 @@ fun ProductTitle(
                 tint = EditColor,
                 contentDescription = null,
                 modifier = Modifier
-                    .size(BUTTON_MEDIUM)
+                    .size(ICON_MEDIUM)
                     .clickable { onEdit() }
             )
             Icon(
@@ -99,7 +99,7 @@ fun ProductTitle(
                 tint = MaterialTheme.colorScheme.error,
                 contentDescription = null,
                 modifier = Modifier
-                    .size(BUTTON_MEDIUM)
+                    .size(ICON_MEDIUM)
                     .clickable { onDelete() }
             )
         }
