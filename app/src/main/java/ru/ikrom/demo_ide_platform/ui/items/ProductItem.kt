@@ -23,12 +23,14 @@ value class DateUI(val date: String){
     constructor(timestamp: Long): this(format(timestamp))
 
     fun toTimestamp(): Long {
-        val formatter = SimpleDateFormat(TIME_12_24, Locale.getDefault())
+        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
         val parsedDate = formatter.parse(date)
         return parsedDate?.time ?: throw IllegalArgumentException("Invalid date format: $date")
     }
 
     companion object {
+        private const val DATE_FORMAT = "dd.MM.yyyy"
+
         private fun format(timestamp: Long): String {
             val calendar = Calendar.getInstance().apply {
                 timeInMillis = timestamp
