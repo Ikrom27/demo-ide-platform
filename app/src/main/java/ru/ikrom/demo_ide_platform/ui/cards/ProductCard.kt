@@ -42,8 +42,8 @@ import ru.ikrom.demo_ide_platform.ui.theme.RADIUS_CHIP_CORNER
 @Composable
 fun ProductCard(
     product: ProductItem,
-    onEdit: (String) -> Unit,
-    onDelete: (String) -> Unit
+    onEdit: () -> Unit,
+    onDelete: () -> Unit
 ){
     Card(
         colors = CardDefaults.cardColors(
@@ -69,8 +69,8 @@ fun ProductCard(
 @Composable
 fun ProductTitle(
     name: String,
-    onEdit: (String) -> Unit,
-    onDelete: (String) -> Unit
+    onEdit: () -> Unit,
+    onDelete: () -> Unit
 ){
     Row (
         verticalAlignment = Alignment.CenterVertically,
@@ -89,13 +89,13 @@ fun ProductTitle(
                 painter = painterResource(R.drawable.ic_edit),
                 tint = EditColor,
                 contentDescription = null,
-                modifier = Modifier.size(BUTTON_MEDIUM).clickable { onEdit(name) }
+                modifier = Modifier.size(BUTTON_MEDIUM).clickable { onEdit() }
             )
             Icon(
                 painter = painterResource(R.drawable.ic_trash),
                 tint = MaterialTheme.colorScheme.error,
                 contentDescription = null,
-                modifier = Modifier.size(BUTTON_MEDIUM).clickable { onDelete(name) }
+                modifier = Modifier.size(BUTTON_MEDIUM).clickable { onDelete() }
             )
         }
 

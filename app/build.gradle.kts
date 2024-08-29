@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
+    implementation(libs.room.ktx)
     kapt(libs.room.compiler)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.dagger.hilt)

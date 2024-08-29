@@ -13,6 +13,7 @@ import ru.ikrom.demo_ide_platform.data.models.Product
 import ru.ikrom.demo_ide_platform.ui.items.DateUI
 import ru.ikrom.demo_ide_platform.ui.items.ProductItem
 import ru.ikrom.demo_ide_platform.ui.items.TagUI
+import ru.ikrom.demo_ide_platform.utils.TagsParser
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,16 +29,41 @@ class ProductListViewModel @Inject constructor(
 
     fun updateListItems(query: String = "") {
         viewModelScope.launch(Dispatchers.IO) {
-            _productList.value = repository.getProducts(query).map { it.toItem() }
+            repository.getProducts(query).collect { list ->
+                _productList.value = list.map { it.toItem() }
+            }
+        }
+    }
+
+    fun updateProduct(productItem: ProductItem){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateProduct(productItem.toModel())
+        }
+    }
+
+    fun deleteProduct(id: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteProduct(id)
         }
     }
 
     private fun Product.toItem(): ProductItem {
         return ProductItem(
+            id = id,
             name = name,
             amount = amount,
             date = DateUI(time),
-            tags = (Gson().fromJson(tags, List::class.java) as List<String>).map { TagUI(it) }
+            tags = TagsParser.getTagsList(tags)
+        )
+    }
+
+    private fun ProductItem.toModel(): Product {
+        return Product(
+            id,
+            name,
+            amount,
+            date.toTimestamp(),
+            TagsParser.toJsonString(tags),
         )
     }
 }

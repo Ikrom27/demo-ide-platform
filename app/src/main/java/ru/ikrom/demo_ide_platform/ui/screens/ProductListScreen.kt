@@ -61,7 +61,14 @@ private fun ProductList(
         }
 
         items(items = products){
-            ProductCard(it, {}, {})
+            ProductCard(
+                product = it,
+                onEdit = {
+                    viewModel.updateProduct(it.copy(amount = it.amount+1))
+                },
+                onDelete = {
+                    viewModel.deleteProduct(it.id)
+                })
         }
     }
 }
