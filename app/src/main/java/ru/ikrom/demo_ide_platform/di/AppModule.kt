@@ -8,6 +8,7 @@ import ru.ikrom.demo_ide_platform.data.ILocalProductsDS
 import ru.ikrom.demo_ide_platform.data.IProductsRepository
 import ru.ikrom.demo_ide_platform.data.LocalProductsDSImpl
 import ru.ikrom.demo_ide_platform.data.ProductsRepositoryImpl
+import ru.ikrom.demo_ide_platform.data.room.ProductDao
 import javax.inject.Singleton
 
 @Module
@@ -21,5 +22,5 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocalProductsDS(): ILocalProductsDS = LocalProductsDSImpl()
+    fun provideLocalProductsDS(productDao: ProductDao): ILocalProductsDS = LocalProductsDSImpl(productDao)
 }

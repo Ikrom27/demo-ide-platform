@@ -1,10 +1,11 @@
 package ru.ikrom.demo_ide_platform.data
 
 import ru.ikrom.demo_ide_platform.data.models.ProductEntity
+import ru.ikrom.demo_ide_platform.data.room.ProductDao
 
-class LocalProductsDSImpl(): ILocalProductsDS {
+class LocalProductsDSImpl(private val productDao: ProductDao): ILocalProductsDS {
     override suspend fun getProducts(query: String): List<ProductEntity> {
-
+        productDao
         return fake
     }
 }

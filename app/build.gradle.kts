@@ -57,6 +57,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+    kapt(libs.room.compiler)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.compiler)
