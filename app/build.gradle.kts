@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.dagger.hilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -48,9 +50,16 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.dagger.hilt)
+    kapt(libs.dagger.compiler)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

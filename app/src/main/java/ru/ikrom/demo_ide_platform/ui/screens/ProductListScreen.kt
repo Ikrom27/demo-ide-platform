@@ -14,11 +14,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ru.ikrom.demo_ide_platform.ui.components.ScreenTitleBar
+import ru.ikrom.demo_ide_platform.viewmodels.ProductListViewModel
 
 @Composable
-fun ProductListScreen(){
-
+fun ProductListScreen(
+    viewModel: ProductListViewModel = hiltViewModel()
+){
+    viewModel
     Scaffold(
         topBar = {
             ScreenTitleBar("Список товаров")

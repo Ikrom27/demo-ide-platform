@@ -15,9 +15,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import ru.ikrom.demo_ide_platform.ui.screens.ProductListScreen
 import ru.ikrom.demo_ide_platform.ui.theme.DemoideplatformTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
