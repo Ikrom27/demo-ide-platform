@@ -7,7 +7,3 @@ data class Product(
     val time: Long,
     val tags: String
 )
-
-fun ProductEntity.toModel(): Product {
-    return Product(name, amount, time, tags)
-}

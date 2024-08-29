@@ -20,7 +20,11 @@ class ProductListViewModel @Inject constructor(
     private val _productList = MutableStateFlow<List<ProductItem>>(emptyList())
     val productList: StateFlow<List<ProductItem>> = _productList
 
-    fun updateListItems(query: String) {
+    init {
+        updateListItems()
+    }
+
+    fun updateListItems(query: String = "") {
         viewModelScope.launch {
             _productList.value = repository.getProducts(query).map { it.toItem() }
         }
