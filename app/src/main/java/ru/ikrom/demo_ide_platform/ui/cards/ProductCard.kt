@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -25,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.flowlayout.FlowRow
 import ru.ikrom.demo_ide_platform.R
 import ru.ikrom.demo_ide_platform.ui.items.ProductItem
 import ru.ikrom.demo_ide_platform.ui.items.TagUI
@@ -62,7 +61,7 @@ fun ProductCard(
             modifier = Modifier.padding(PADDING_STANDARD)) {
 
             ProductTitle(product.name, onEdit, onDelete)
-            TagList(product.tags)
+            TagsGrid(product.tags)
             ProductInfo(product)
         }
     }
@@ -109,9 +108,12 @@ fun ProductTitle(
 }
 
 @Composable
-fun TagList(tags: List<TagUI>){
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(PADDING_BETWEEN_EXTRA_SMALL)) {
-        items(tags){ tag ->
+fun TagsGrid(tags: List<TagUI>){
+    FlowRow(
+        mainAxisSpacing = PADDING_BETWEEN_EXTRA_SMALL,
+        crossAxisSpacing = PADDING_BETWEEN_EXTRA_SMALL
+    ) {
+        tags.forEach { tag ->
             Chip(text = tag.text)
         }
     }

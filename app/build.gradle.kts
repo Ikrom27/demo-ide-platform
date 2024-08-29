@@ -57,6 +57,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.accompanist.flowlayout)
     implementation(libs.gson)
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
