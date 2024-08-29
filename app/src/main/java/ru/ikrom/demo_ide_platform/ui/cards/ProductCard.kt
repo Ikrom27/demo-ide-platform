@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +35,7 @@ import ru.ikrom.demo_ide_platform.ui.theme.EditColor
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_BETWEEN_EXTRA_SMALL
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_BETWEEN_MEDIUM
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_BETWEEN_MEDIUM_PLUS
+import ru.ikrom.demo_ide_platform.ui.theme.PADDING_BETWEEN_SMALL
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_EXTRA_SMALL
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_SMALL
 import ru.ikrom.demo_ide_platform.ui.theme.PADDING_STANDARD
@@ -61,7 +63,7 @@ fun ProductCard(
 
             ProductTitle(product.name, onEdit, onDelete)
             TagList(product.tags)
-
+            ProductInfo(product)
         }
     }
 }
@@ -89,13 +91,17 @@ fun ProductTitle(
                 painter = painterResource(R.drawable.ic_edit),
                 tint = EditColor,
                 contentDescription = null,
-                modifier = Modifier.size(BUTTON_MEDIUM).clickable { onEdit() }
+                modifier = Modifier
+                    .size(BUTTON_MEDIUM)
+                    .clickable { onEdit() }
             )
             Icon(
                 painter = painterResource(R.drawable.ic_trash),
                 tint = MaterialTheme.colorScheme.error,
                 contentDescription = null,
-                modifier = Modifier.size(BUTTON_MEDIUM).clickable { onDelete() }
+                modifier = Modifier
+                    .size(BUTTON_MEDIUM)
+                    .clickable { onDelete() }
             )
         }
 
@@ -126,5 +132,40 @@ fun Chip(text: String) {
             modifier = Modifier
                 .padding(horizontal = PADDING_SMALL, vertical = PADDING_EXTRA_SMALL),
         )
+    }
+}
+
+@Composable
+fun ProductInfo(product: ProductItem){
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(PADDING_BETWEEN_SMALL)) {
+            Text(
+                text = stringResource(id = R.string.in_store),
+                style = MaterialTheme.typography.bodyLarge.copy(),
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp
+            )
+            Text(
+                text = product.amount.toString(),
+                style = MaterialTheme.typography.bodyLarge.copy(),
+                fontSize = 18.sp
+            )
+        }
+        Column(verticalArrangement = Arrangement.spacedBy(PADDING_BETWEEN_SMALL)) {
+            Text(
+                text = stringResource(id = R.string.update_date),
+                style = MaterialTheme.typography.bodyLarge.copy(),
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp
+            )
+            Text(
+                text = product.date.date,
+                style = MaterialTheme.typography.bodyLarge.copy(),
+                fontSize = 18.sp
+            )
+        }
     }
 }
