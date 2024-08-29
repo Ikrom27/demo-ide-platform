@@ -5,4 +5,8 @@
     <string name="search_products">Search products</string>
     <string name="in_store">In store</string>
     <string name="added_date">Added date</string>
+    <string name="delete_product">Delete product</string>
+    <string name="delete_text">Are you sure you want to delete the selected item?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

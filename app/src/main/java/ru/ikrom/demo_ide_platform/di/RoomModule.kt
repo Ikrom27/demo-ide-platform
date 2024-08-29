@@ -24,6 +24,7 @@ object RoomModule {
             "app_database",
         )
             .createFromAsset("data.db")
+            .fallbackToDestructiveMigration()
             .build()
     }
 
