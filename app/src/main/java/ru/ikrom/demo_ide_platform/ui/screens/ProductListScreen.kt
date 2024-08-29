@@ -4,10 +4,12 @@ import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,19 +24,22 @@ import ru.ikrom.demo_ide_platform.viewmodels.ProductListViewModel
 fun ProductListScreen(
     viewModel: ProductListViewModel = hiltViewModel()
 ){
-    viewModel
     Scaffold(
         topBar = {
             ScreenTitleBar("Список товаров")
         }
     ) { padding ->
-        ProductList(Modifier.padding(top = padding.calculateTopPadding()))
+        ProductList(viewModel, Modifier.padding(top = padding.calculateTopPadding()))
     }
 }
 
 @Composable
-private fun ProductList(modifier: Modifier){
+private fun ProductList(
+    viewModel: ProductListViewModel,
+    modifier: Modifier,
+){
     var searchField by remember { mutableStateOf("") }
+    val products by viewModel.productList.collectAsState()
 
     LazyColumn(
         modifier = modifier
@@ -45,11 +50,15 @@ private fun ProductList(modifier: Modifier){
                 value = searchField,
                 onValueChange = {
                     searchField = it
-                    Log.d("Seach", searchField)
+                    viewModel.updateListItems(it)
                 },
                 label = {Text("Поиск")},
                 modifier = Modifier.fillMaxWidth()
             )
+        }
+
+        items(items = products){
+            Text(it.name)
         }
     }
 }
