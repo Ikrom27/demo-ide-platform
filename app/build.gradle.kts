@@ -57,6 +57,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.gson)
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
     kapt(libs.room.compiler)

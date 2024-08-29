@@ -11,7 +11,7 @@ data class ProductItem(
 )
 
 @JvmInline
-value class TagUI(val tag: String)
+value class TagUI(val text: String)
 
 @JvmInline
 value class DateUI(val date: String){

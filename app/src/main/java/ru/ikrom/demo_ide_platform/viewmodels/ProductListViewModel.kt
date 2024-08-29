@@ -2,6 +2,7 @@ package ru.ikrom.demo_ide_platform.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,7 +37,7 @@ class ProductListViewModel @Inject constructor(
             name = name,
             amount = amount,
             date = DateUI(time),
-            tags = tags.split("").map { TagUI(it) }
+            tags = (Gson().fromJson(tags, List::class.java) as List<String>).map { TagUI(it) }
         )
     }
 }

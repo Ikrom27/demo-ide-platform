@@ -17,3 +17,5 @@ val BackGround = Color(0xfff5f4f5)
 val BlueSecondary = Color(0xffb1dcfc)
 val Purple40 = Color(0xFF6650a4)
 val Red = Color(0xffcc4100)
+
+val CardColor = Color.White
