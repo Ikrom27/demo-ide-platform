@@ -10,11 +10,10 @@ import androidx.compose.ui.graphics.Color
 //val PurpleGrey40 = Color(0xFF625b71)
 //val Pink40 = Color(0xFF7D5260)
 
-val BluePrimary = Color(0xff445e91)
-val Grey = Color(0xff575e71)
-val Surface = Color(0xffe7e9f2)
+val BlueDark = Color(0xff445e91)
+val PinkLight = Color(0xffe7e9f2)
 val BackGround = Color(0xfff5f4f5)
-val BlueSecondary = Color(0xffb1dcfc)
+val BlueLight = Color(0xffb1dcfc)
 val Red = Color(0xffcc4100)
 
 val CardColor = Color.White

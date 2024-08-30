@@ -48,7 +48,7 @@ fun ProductCard(
 ){
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = CardColor
+            containerColor = MaterialTheme.colorScheme.surfaceBright
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = CARD_ELEVATION
@@ -124,7 +124,7 @@ fun Chip(text: String) {
     Card(
         border = BorderStroke(1.dp, Color.Gray),
         colors = CardDefaults.cardColors(
-            containerColor = CardColor
+            containerColor = MaterialTheme.colorScheme.surfaceBright
         ),
         shape = RoundedCornerShape(RADIUS_CHIP_CORNER)
     ) {
